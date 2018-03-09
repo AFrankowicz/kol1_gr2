@@ -30,12 +30,12 @@ class Plane():
 		self.orientation = 0.0
 
 	def new_orientation(self, orientation):
-		self.prev_oreintation = self.orientation
+		self.prev_orientation = self.orientation
 		self.orientation = orientation
 
 
 	def correct_orientation(self):
-		diff = self.prev_oreintation - self.orientation
+		diff = self.prev_orientation - self.orientation
 		self.orientation = 0.01*diff
 
 	def print_orientation(self):
