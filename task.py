@@ -35,7 +35,7 @@ class Plane():
 
 
 	def correct_orientation(self):
-		diff =abs( self.prev_oreintation - self.orientation)
+		diff = self.prev_oreintation - self.orientation
 		self.orientation = 0.01*diff
 
 	def print_orientation(self):
