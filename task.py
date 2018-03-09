@@ -20,3 +20,36 @@
 #When you are done upload this code to your github repository. 
 #The whole repository MUST be a fork from https://github.com/mwmajew/kol1_gr2
 #Good Luck
+
+import random
+
+class Plane():
+	def __init__(self):
+		self.optimal = 0.0
+		self.prev_orientation = 0.0
+		self.orientation = 0.0
+
+	def new_orientation(self, orientation):
+		self.prev_oreintation = self.orientation
+		self.orientation = orientation
+
+
+	def correct_orientation(self):
+		diff =abs( self.prev_oreintation - self.orientation)
+		self.orientation = 0.01*diff
+
+	def print_orientation(self):
+		print("Current orientation is: {} degrees.".format(self.orientation))
+
+
+if __name__ == "__main__":
+	plane = Plane()
+	plane.print_orientation()
+
+	while True:
+		#every step orientation changes because of the turbulences
+		plane.new_orientation(random.gauss(0, 30))
+		plane.correct_orientation()
+		plane.print_orientation()
+	
+
