@@ -22,34 +22,50 @@
 #Good Luck
 
 import random
+from time import sleep
 
 class Plane():
 	def __init__(self):
 		self.optimal = 0.0
 		self.prev_orientation = 0.0
 		self.orientation = 0.0
+		self.max_angle = 270;
 
 	def new_orientation(self, orientation):
 		self.prev_orientation = self.orientation
 		self.orientation = orientation
 
-
 	def correct_orientation(self):
 		diff = self.prev_orientation - self.orientation
 		self.orientation = 0.01*diff
 
-	def print_orientation(self):
-		print("Current orientation is: {} degrees.".format(self.orientation))
+	def current_orientation(self):
+		return "Current orientation is: {} degrees.".format(self.orientation)
+
+	def did_crash(self):
+		if abs(self.orientation) > 270:
+			
+		
 
 
+class Simulation():
+	def __init__(self, plane):
+		self.plane = plane
+
+	def flight(self):
+		while True:
+			plane.new_orientation(random.gauss(0, 30))
+			plane.correct_orientation()
+			yield plane.current_orientation()
+
+	def run(self):
+		for orientation in self.flight():
+			print(orientation)
+			sleep(0.1)
+			
 if __name__ == "__main__":
 	plane = Plane()
-	plane.print_orientation()
-
-	while True:
-		#every step orientation changes because of the turbulences
-		plane.new_orientation(random.gauss(0, 30))
-		plane.correct_orientation()
-		plane.print_orientation()
+	simulation = Simulation(plane)
+	simulation.run()
 	
 

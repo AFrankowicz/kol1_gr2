@@ -1,0 +1,8 @@
+separated env and plane(2 classes)
+limit rate - limited angle that the plane can move
+pep8
+__name__ = "__main__"
+better commandline interface
+use generator
+carriage return
+multiprocessing
